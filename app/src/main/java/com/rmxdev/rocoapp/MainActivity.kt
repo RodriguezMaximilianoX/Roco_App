@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
             RocoAppTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    topBar = { },
+                    topBar = {  },
                     content = { paddingValues ->
                         Greeting("Android", Modifier.padding(paddingValues))
                     }
