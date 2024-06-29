@@ -1,8 +1,5 @@
-package com.rmxdev.rocoapp.ui.home
+package com.rmxdev.rocoapp.ui.content.home
 
-import android.content.Context
-import android.widget.Toast
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -15,15 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun HomeScreen(
-    context: Context,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onButtonClick: () -> Unit
 ) {
 
     Column(
@@ -33,20 +28,15 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextButton(onClick = {
-            Toast.makeText(context, "Boton presionado", Toast.LENGTH_SHORT).show()
+            onButtonClick()
         }) {
             Text(
                 text = "Carnet de vacunación",
                 modifier = Modifier
                     .clip(shape = RoundedCornerShape(32.dp))
-                    .padding(16.dp)
+                    .padding(16.dp),
+                fontWeight = FontWeight.Bold
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun HomeScreenPreview(modifier: Modifier = Modifier) {
-    HomeScreen(context = LocalContext.current)
 }
