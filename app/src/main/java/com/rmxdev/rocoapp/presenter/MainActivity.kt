@@ -1,4 +1,4 @@
-package com.rmxdev.rocoapp
+package com.rmxdev.rocoapp.presenter
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
