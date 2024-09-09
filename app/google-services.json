@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "315210916330",
+    "project_id": "rocoapp-61662",
+    "storage_bucket": "rocoapp-61662.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315210916330:android:f7f8cadf9944490d0ad293",
+        "android_client_info": {
+          "package_name": "com.rmxdev.rocoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApkC5G0JOjx_vlXt6ins8lQd2NwMQvKNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
