@@ -11,7 +11,7 @@ import com.rmxdev.rocoapp.presenter.login.LoginScreen
 
 @Composable
 fun NavigationWrapper(navController: NavHostController = rememberNavController(), modifier: Modifier = Modifier) {
-    NavHost(navController = navController, startDestination = "login"){
+    NavHost(navController = navController, startDestination = "initial"){
         composable("initial"){
             InitialScreen(
                 modifier = modifier,
@@ -20,7 +20,11 @@ fun NavigationWrapper(navController: NavHostController = rememberNavController()
             )
         }
         composable("login"){
-            LoginScreen(modifier = modifier)
+            LoginScreen(
+                modifier = modifier,
+                onLoginSuccess = { navController.navigate("home")},
+                resetPassword = {}
+            )
         }
         composable("signup"){
             //SignUpScreen(modifier = modifier)
