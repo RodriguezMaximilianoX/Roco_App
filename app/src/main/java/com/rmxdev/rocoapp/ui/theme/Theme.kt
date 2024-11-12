@@ -21,7 +21,7 @@ private val DarkColorScheme = darkColorScheme(
 private val LightColorScheme = lightColorScheme(
     primary = UnselectedField,
     secondary = SelectedField,
-    tertiary = TextColor,
+    tertiary = Background,
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),

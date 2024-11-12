@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.rmxdev.rocoapp.R
 import com.rmxdev.rocoapp.ui.theme.Background
 import com.rmxdev.rocoapp.ui.theme.ButtonColor
@@ -33,6 +34,7 @@ import com.rmxdev.rocoapp.ui.theme.fontFamily
 @Composable
 fun InitialScreen(
     modifier: Modifier = Modifier,
+    viewModel: InitialViewModel = hiltViewModel(),
     navigateToLogin: () -> Unit,
     navigateToSignUp: () -> Unit,
 ) {

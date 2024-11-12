@@ -45,6 +45,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.rmxdev.rocoapp.R
 import com.rmxdev.rocoapp.ui.theme.Background
 import com.rmxdev.rocoapp.ui.theme.ButtonColor
+import com.rmxdev.rocoapp.ui.theme.DisabledButtonColor
 import com.rmxdev.rocoapp.ui.theme.SelectedField
 import com.rmxdev.rocoapp.ui.theme.TextColor
 import com.rmxdev.rocoapp.ui.theme.UnselectedField
@@ -99,14 +100,11 @@ fun LoginScreen(
                 unfocusedTextColor = Color.White
             )
         )
-        TextField(
-            value = password,
+        TextField(value = password,
             onValueChange = { password = it },
             label = {
                 Text(
-                    "Ingresa tu contraseña",
-                    fontFamily = fontFamily,
-                    color = Color.White
+                    "Ingresa tu contraseña", fontFamily = fontFamily, color = Color.White
                 )
             },
             modifier = Modifier
@@ -118,8 +116,7 @@ fun LoginScreen(
                 focusedTextColor = Color.White,
                 unfocusedTextColor = Color.White
             ),
-            visualTransformation =
-            if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
+            visualTransformation = if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             trailingIcon = {
                 IconButton(onClick = { passwordHidden = !passwordHidden }) {
@@ -129,8 +126,7 @@ fun LoginScreen(
                         if (passwordHidden) "Mostrar contraseña" else "Ocultar contraseña"
                     Icon(painterResource(id = visibilityIcon), contentDescription = description)
                 }
-            }
-        )
+            })
         TextButton(
             onClick = { resetPassword() },
             modifier = Modifier
@@ -142,7 +138,8 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(16.dp))
         Button(
             onClick = { viewModel.login(email, password) },
-            colors = buttonColors(ButtonColor),
+            enabled = email.isNotBlank() && password.isNotBlank(),
+            colors = buttonColors(ButtonColor, disabledContainerColor = DisabledButtonColor),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 26.dp)
@@ -171,9 +168,7 @@ fun LoginScreen(
             is LoginState.Error -> {
                 LaunchedEffect(loginState) {
                     Toast.makeText(
-                        context,
-                        "Usuario o contraseña incorrecta",
-                        Toast.LENGTH_LONG
+                        context, "Usuario o contraseña incorrecta", Toast.LENGTH_LONG
                     ).show()
                 }
             }

@@ -14,6 +14,7 @@ fun NavigationWrapper(navController: NavHostController = rememberNavController()
     NavHost(navController = navController, startDestination = "initial"){
         composable("initial"){
             InitialScreen(
+
                 modifier = modifier,
                 navigateToLogin = { navController.navigate("login") },
                 navigateToSignUp = { navController.navigate("signup") }
