@@ -98,7 +98,8 @@ fun LoginScreen(
                 focusedContainerColor = SelectedField,
                 focusedTextColor = Color.White,
                 unfocusedTextColor = Color.White
-            )
+            ),
+            maxLines = 1
         )
         TextField(value = password,
             onValueChange = { password = it },
@@ -126,7 +127,8 @@ fun LoginScreen(
                         if (passwordHidden) "Mostrar contraseña" else "Ocultar contraseña"
                     Icon(painterResource(id = visibilityIcon), contentDescription = description)
                 }
-            })
+            },
+            maxLines = 1)
         TextButton(
             onClick = { resetPassword() },
             modifier = Modifier

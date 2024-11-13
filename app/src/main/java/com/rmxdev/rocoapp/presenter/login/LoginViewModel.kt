@@ -15,14 +15,19 @@ class LoginViewModel @Inject constructor(
     var loginState: StateFlow<LoginState> = _loginState
 
     fun login(email: String, password: String){
-       _loginState.value = LoginState.Loading
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener {task ->
-                _loginState.value = if(task.isSuccessful){
-                    LoginState.Success
-                }else{
-                    LoginState.Error(task.exception?.message ?: "Login failed")
-                }
-            }
+       if (email.isNotBlank() && password.isNotBlank()){
+           _loginState.value = LoginState.Loading
+           auth.signInWithEmailAndPassword(email, password)
+               .addOnCompleteListener {task ->
+                   _loginState.value = if(task.isSuccessful){
+                       LoginState.Success
+                   }else{
+                       LoginState.Error(task.exception?.message ?: "Login failed")
+                   }
+               }
+       }
+        else{
+            LoginState.Error("Email and password cannot be empty")
+       }
     }
 }

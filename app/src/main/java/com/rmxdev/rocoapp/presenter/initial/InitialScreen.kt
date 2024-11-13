@@ -21,10 +21,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.rmxdev.rocoapp.R
 import com.rmxdev.rocoapp.ui.theme.Background
 import com.rmxdev.rocoapp.ui.theme.ButtonColor
@@ -34,10 +32,10 @@ import com.rmxdev.rocoapp.ui.theme.fontFamily
 @Composable
 fun InitialScreen(
     modifier: Modifier = Modifier,
-    viewModel: InitialViewModel = hiltViewModel(),
     navigateToLogin: () -> Unit,
-    navigateToSignUp: () -> Unit,
+    navigateToSignUp: () -> Unit
 ) {
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -94,11 +92,4 @@ fun InitialScreen(
         }
         Spacer(modifier = Modifier.weight(1f))
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun InitialScreenPreview() {
-    InitialScreen(navigateToLogin = {}, navigateToSignUp = {})
-
 }

@@ -7,18 +7,21 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.tooling.preview.Preview
+import com.google.firebase.auth.FirebaseAuth
 import com.rmxdev.rocoapp.ui.theme.Background
 import com.rmxdev.rocoapp.ui.theme.RocoAppTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
+    private var startDestination = "initial"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,9 +30,17 @@ class MainActivity : ComponentActivity() {
             window.navigationBarColor = Background.toArgb()
             RocoAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NavigationWrapper(modifier = Modifier.padding(innerPadding))
+                    NavigationWrapper(
+                        modifier = Modifier.padding(innerPadding),
+                        startDestination = startDestination
+                    )
                 }
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        startDestination = if (firebaseAuth.currentUser != null) "home" else "initial"
     }
 }
